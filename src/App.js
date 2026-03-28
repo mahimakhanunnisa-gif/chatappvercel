@@ -264,7 +264,10 @@ useEffect(() => {
   return (
     <div className="login">
       <div className="loginBox">
-        <h2>Textify</h2>
+        <div className="logoTitle">
+  <img src={logo} alt="logo" className="logo" />
+  <h2>Textify</h2>
+</div>
         <button onClick={signInWithGoogle} className="googleBtn">
           Continue with Google
         </button>
