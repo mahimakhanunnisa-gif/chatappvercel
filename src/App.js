@@ -268,6 +268,10 @@ useEffect(() => {
           Continue with Google
         </button>
       </div>
+    {/* 👇 ADD FOOTER HERE */}
+      <div className="footer">
+        Made with <span className="heart">❤️</span> from Sachin Adi
+      </div>
     </div>
   );
 }
