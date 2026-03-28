@@ -1,0 +1,254 @@
+/* App.css */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Layout */
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 30%;
+  background: #111b21;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+/* Profile */
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #2a3942;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* Logout */
+.logoutBtn {
+  margin: 10px 0;
+  padding: 8px;
+  background: #ff4d4d;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Users list */
+.user {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #2a3942;
+  transition: 0.2s;
+}
+
+.user:hover {
+  background: #2a3942;
+}
+
+/* Chat section */
+.chat {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  background: #efeae2;
+}
+
+/* Chat header */
+.chatHeader {
+  padding: 15px;
+  background: #202c33;
+  color: white;
+  font-weight: bold;
+}
+
+/* Messages */
+.messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Message bubble */
+.message {
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 8px;
+  max-width: 60%;
+}
+
+/* Sent */
+.sent {
+  align-self: flex-end;
+  background: #d9fdd3;
+}
+
+/* Received */
+.received {
+  align-self: flex-start;
+  background: white;
+}
+
+/* Input area */
+.inputBox {
+  display: flex;
+  padding: 10px;
+  background: #202c33;
+}
+
+.inputBox input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+}
+
+.inputBox button {
+  margin-left: 10px;
+  padding: 10px 15px;
+  background: #25d366;
+  border: none;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+}
+/* Highlight selected user */
+.activeUser {
+  background: #2a3942;
+  border-left: 4px solid #25d366;
+}
+
+/* Login page full screen center */
+.login {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #111b21;
+}
+
+/* Login card */
+.loginBox {
+  background: #202c33;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+}
+
+/* Google button */
+.googleBtn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #25d366;
+  border: none;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.googleBtn:hover {
+  background: #1ebe5d;
+}
+/* Message text */
+.msgText {
+  margin-bottom: 5px;
+}
+
+/* Timestamp */
+.msgTime {
+  font-size: 10px;
+  color: gray;
+  text-align: right;
+}
+.deleteBtn {
+  margin-top: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  align-self: flex-end;
+  padding: 0;
+}
+.deleteIcon {
+  width: 16px;
+  height: 16px;
+}
+.deleteIcon:hover {
+  transform: scale(1.2);
+}
+/* Overlay */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(11, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Modal box */
+.modalBox {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 200px;
+  text-align: center;
+}
+
+/* Buttons */
+.modalActions {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cancelBtn {
+  background: #ccc;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.deleteConfirmBtn {
+  background: red;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.modalBox {
+  animation: popup 0.5s ease;
+}
+
+@keyframes popup {
+  from {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
