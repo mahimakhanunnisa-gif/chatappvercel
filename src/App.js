@@ -263,7 +263,7 @@ useEffect(() => {
   return (
     <div className="login">
       <div className="loginBox">
-        <h2>Chat App</h2>
+        <h2>Textify</h2>
         <button onClick={signInWithGoogle} className="googleBtn">
           Continue with Google
         </button>
