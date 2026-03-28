@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import "./App.css";
 import deleteIcon from "./assets/delete.png";
+import logo from "./assets/logo.png";
 
 const supabase = createClient(
   "https://rmmnxjuofthqugkrwmqf.supabase.co",
