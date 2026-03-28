@@ -300,7 +300,7 @@ body {
 
 /* Logo styling */
 .logo {
-  width: 40px;
+  width: 50px;
   height: 40px;
   border-radius: 5px;
   animation: float 2s ease-in-out infinite;
