@@ -269,7 +269,7 @@ useEffect(() => {
   <h2>Textify</h2>
 </div>
         <button onClick={signInWithGoogle} className="googleBtn">
-          Continue with Google
+          <img src="google.png" height="25px" width="25px" />Continue with Google
         </button>
       </div>
     {/* 👇 ADD FOOTER HERE */}
