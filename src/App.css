@@ -74,7 +74,19 @@ body, html {
   flex-direction: column;
   height: 100vh;
 }
+.userProfile {
+  margin-bottom: 15px;
+}
 
+.userName {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.userEmail {
+  font-size: 12px;
+  color: gray;
+}
 /* Chat header 
 .chatHeader {
   padding: 15px;
