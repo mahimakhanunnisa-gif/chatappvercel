@@ -309,11 +309,21 @@ useEffect(() => {
           (msg.sender_email === chatEmail &&
             msg.receiver_email === user.email)
         ) {
-          setMessages((prev) => {
-            const exists = prev.find((m) => m.id === msg.id);
-            if (exists) return prev;
-            return [...prev, msg];
-          });
+         setMessages((prev) => {
+  const exists = prev.find(
+    (m) =>
+      m.id === msg.id ||
+      (
+        m.content === msg.content &&
+        m.sender_email === msg.sender_email &&
+        m.receiver_email === msg.receiver_email
+      )
+  );
+
+  if (exists) return prev;
+
+  return [...prev, msg];
+});
         }
       }
     )
