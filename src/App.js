@@ -75,7 +75,9 @@ const formatTime = (timestamp) => {
     supabase.removeChannel(channel);
   };
 }, [chatEmail, user]);
-
+useEffect(() => {
+  messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+}, [messages]);
   // 🟢 Google Login
  const signInWithGoogle = async () => {
   await supabase.auth.signInWithOAuth({
