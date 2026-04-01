@@ -13,6 +13,7 @@ const supabase = createClient(
 export default function App() {
   const [user, setUser] = useState(null);
   const [users, setUsers] = useState([]);
+  const [unreadUsers, setUnreadUsers] = useState([]);
   const [chatEmail, setChatEmail] = useState("");
   const [messages, setMessages] = useState([]);
   const [text, setText] = useState("");
@@ -282,12 +283,30 @@ useEffect(() => {
 if (msg.sender_email === user.email) return;
 
 // ✅ Only receive messages from selected user
+//if (
+//  msg.sender_email === chatEmail &&
+//  msg.receiver_email === user.email
+//) {
+//  setMessages((prev) => [...prev, msg]);
+//} 
+  // ❌ Ignore your own messages
+if (msg.sender_email === user.email) return;
+
+// ✅ If message is from currently open chat → show in chat
 if (
   msg.sender_email === chatEmail &&
   msg.receiver_email === user.email
 ) {
   setMessages((prev) => [...prev, msg]);
-} {
+} else {
+  // 🟢 NEW: mark as unread
+  setUnreadUsers((prev) => {
+    if (prev.includes(msg.sender_email)) return prev;
+    return [...prev, msg.sender_email];
+  });
+}      
+        
+        {
          setMessages((prev) => {
   const exists = prev.find(
     (m) =>
@@ -358,8 +377,19 @@ if (
         {users.map((u, i) => (
           <div
             key={i}
-            className={`user ${chatEmail === u.email ? "activeUser" : ""}`}
-    onClick={() => setChatEmail(u.email)}
+          className={`user 
+  ${chatEmail === u.email ? "activeUser" : ""} 
+  ${unreadUsers.includes(u.email) ? "unreadUser" : ""}
+`}
+  onClick={() => {
+  setChatEmail(u.email);
+
+  // ✅ remove unread highlight
+  setUnreadUsers((prev) =>
+    prev.filter((email) => email !== u.email)
+  );
+}}
+   // onClick={() => setChatEmail(u.email)}
           >
             {u.name || u.email}
           </div>
