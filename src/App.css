@@ -325,3 +325,8 @@ body, html {
   50% { transform: translateY(-4px); }
   100% { transform: translateY(0px); }
 }
+
+.unreadUser {
+  background-color: #d1f5d3;
+  font-weight: bold;
+}
