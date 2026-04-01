@@ -16,6 +16,7 @@ export default function App() {
   const [chatEmail, setChatEmail] = useState("");
   const [messages, setMessages] = useState([]);
   const [text, setText] = useState("");
+  const messagesEndRef = useRef(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 const [selectedMsgId, setSelectedMsgId] = useState(null);
 
