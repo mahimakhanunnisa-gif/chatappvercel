@@ -75,13 +75,13 @@ body, html {
   height: 100vh;
 }
 
-/* Chat header */
+/* Chat header 
 .chatHeader {
   padding: 15px;
   background: #202c33;
   color: white;
   font-weight: bold;
-}
+}*/
 .chatHeader {
   position: sticky;
   top: 0;
