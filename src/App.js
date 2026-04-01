@@ -116,7 +116,6 @@ useEffect(() => {
 }, []);
 
 
-  */
   // 👥 Fetch users
   const fetchUsers = async () => {
     const { data, error } = await supabase.from("users").select("email");
