@@ -357,7 +357,7 @@ useEffect(() => {
             className={`user ${chatEmail === u.email ? "activeUser" : ""}`}
     onClick={() => setChatEmail(u.email)}
           >
-            {u.email}
+            {u.name || u.email}
           </div>
         ))}
       </div>
