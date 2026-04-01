@@ -365,8 +365,17 @@ if (
     <div className="app">
       {/* Sidebar */}
       <div className="sidebar">
-        <h3>{user.email}</h3>
+       // <h3>{user.email}</h3>
 
+    <div className="userProfile">
+  <div className="userName">
+    {user.user_metadata?.full_name || "User"}
+  </div>
+  <div className="userEmail">
+    ({user.email})
+  </div>
+</div>
+    
         <button onClick={handleLogout} className="logoutBtn">
           Logout
         </button>
