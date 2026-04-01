@@ -398,7 +398,15 @@ if (
       {/* Chat */}
       <div className="chat">
         <div className="messages">
-  {messages.map((msg, i) => (
+  {messages
+  .filter(
+    (msg) =>
+      (msg.sender_email === user.email &&
+        msg.receiver_email === chatEmail) ||
+      (msg.sender_email === chatEmail &&
+        msg.receiver_email === user.email)
+  )
+  .map((msg, i) => (
     <div
       key={i}
       className={`message ${
