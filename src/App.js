@@ -334,6 +334,7 @@ useEffect(() => {
       )}
     </div>
   ))}
+    <div ref={messagesEndRef}></div>
 </div>
 
         {chatEmail && (
