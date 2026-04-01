@@ -193,18 +193,26 @@ useEffect(() => {
   const sendMessage = async () => {
   if (!text || !chatEmail) return;
 
+  // 👇 ADD THIS HERE
   const newMsg = {
+    id: Date.now(), // temporary id (IMPORTANT)
     sender_email: user.email,
     receiver_email: chatEmail,
     content: text,
     created_at: new Date().toISOString(),
   };
 
-  // ✅ 1. Instant UI update
+  // ✅ 1. Show instantly in UI
   setMessages((prev) => [...prev, newMsg]);
 
-  // ✅ 2. Save to DB
-  const { error } = await supabase.from("messages").insert([newMsg]);
+  // ✅ 2. Save to database
+  const { error } = await supabase.from("messages").insert([
+    {
+      sender_email: user.email,
+      receiver_email: chatEmail,
+      content: text,
+    },
+  ]);
 
   if (error) {
     console.log("Send error:", error);
