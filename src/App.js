@@ -278,12 +278,16 @@ useEffect(() => {
       (payload) => {
         const msg = payload.new;
 
-        if (
-          (msg.sender_email === user.email &&
-            msg.receiver_email === chatEmail) ||
-          (msg.sender_email === chatEmail &&
-            msg.receiver_email === user.email)
-        ) {
+        // ❌ IGNORE your own messages
+if (msg.sender_email === user.email) return;
+
+// ✅ Only receive messages from selected user
+if (
+  msg.sender_email === chatEmail &&
+  msg.receiver_email === user.email
+) {
+  setMessages((prev) => [...prev, msg]);
+} {
          setMessages((prev) => {
   const exists = prev.find(
     (m) =>
