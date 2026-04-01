@@ -38,43 +38,7 @@ const formatTime = (timestamp) => {
     year: "numeric",
   });
 };
-  // 🔐 Auth state listener
-  useEffect(() => {
-  if (!chatEmail || !user) return;
-
-  // Load existing messages
-  fetchMessages(chatEmail);
-
-  // Subscribe to realtime changes
-  const channel = supabase
-    .channel("messages-channel")
-    .on(
-      "postgres_changes",
-      {
-        event: "INSERT",
-        schema: "public",
-        table: "messages",
-      },
-      (payload) => {
-        const msg = payload.new;
-
-        // Only update if message belongs to current chat
-        if (
-          (msg.sender_email === user.email &&
-            msg.receiver_email === chatEmail) ||
-          (msg.sender_email === chatEmail &&
-            msg.receiver_email === user.email)
-        ) {
-          setMessages((prev) => [...prev, msg]);
-        }
-      }
-    )
-    .subscribe();
-
-  return () => {
-    supabase.removeChannel(channel);
-  };
-}, [chatEmail, user]);
+  
 useEffect(() => {
   messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
 }, [messages]);
