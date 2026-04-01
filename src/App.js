@@ -203,11 +203,7 @@ useEffect(() => {
   };
 
   // ✅ 1. Show instantly in UI
-  setMessages((prev) => {
-  const exists = prev.find((m) => m.id === msg.id);
-  if (exists) return prev;
-  return [...prev, msg];
-});
+  setMessages((prev) => [...prev, newMsg]);
 
   // ✅ 2. Save to database
   const { error } = await supabase.from("messages").insert([
