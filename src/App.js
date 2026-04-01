@@ -87,9 +87,14 @@ useEffect(() => {
 
   // 🚪 Logout
   const handleLogout = async () => {
+  try {
     await supabase.auth.signOut();
     setUser(null);
-  };
+    setUsers([]);
+  } catch (err) {
+    console.log("Logout error:", err);
+  }
+};
 
 
 
