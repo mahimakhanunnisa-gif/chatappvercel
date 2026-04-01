@@ -347,8 +347,14 @@ body, html {
   100% { transform: translateY(0px); }
 }
 
-.unreadUser {
+/*.unreadUser {
   background-color: #d1f5d3;
   font-weight: bold;
   color:black;
+}*/
+
+.unreadUser::after {
+  content: "●";
+  color: green;
+  float: right;
 }
