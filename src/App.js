@@ -397,6 +397,12 @@ if (
 
       {/* Chat */}
       <div className="chat">
+         {/* ✅ NEW STICKY HEADER */}
+  {chatEmail && (
+    <div className="chatHeader">
+      {chatEmail}
+    </div>
+  )}
         <div className="messages">
   {messages
   .filter(
