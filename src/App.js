@@ -157,8 +157,13 @@ useEffect(() => {
     .from("users")
     .select("email, name");
 
-  if (!error && data) {
-    setUsers(data.filter((u) => u.email !== user.email));
+  if (error) {
+    console.log(error);
+    return;
+  }
+
+  if (data) {
+    setUsers(data.filter((u) => u.email !== user?.email));
   }
 };
 
