@@ -165,12 +165,14 @@ useEffect(() => {
 
   // 👥 Fetch users
   const fetchUsers = async () => {
-    const { data, error } = await supabase.from("users").select("email");
+  const { data, error } = await supabase
+    .from("users")
+    .select("email, name");
 
-    if (!error) {
-      setUsers(data.filter((u) => u.email !== user.email));
-    }
-  };
+  if (!error && data) {
+    setUsers(data.filter((u) => u.email !== user.email));
+  }
+};
 
   useEffect(() => {
     if (user) fetchUsers();
