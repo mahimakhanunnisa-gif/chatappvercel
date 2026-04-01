@@ -82,6 +82,15 @@ body, html {
   color: white;
   font-weight: bold;
 }
+.chatHeader {
+  position: sticky;
+  top: 0;
+  background: #ffffff;
+  padding: 12px;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  z-index: 10;
+}
 
 /* Messages */
 .messages {
