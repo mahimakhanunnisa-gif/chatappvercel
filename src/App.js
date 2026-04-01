@@ -190,33 +190,44 @@ useEffect(() => {
   };
 
   // 📤 Send message
-  const sendMessage = async () => {
+ const sendMessage = async () => {
   if (!text || !chatEmail) return;
 
-  // 👇 ADD THIS HERE
+  const tempId = Date.now();
+
   const newMsg = {
-    id: Date.now(), // temporary id (IMPORTANT)
+    id: tempId, // temporary id
     sender_email: user.email,
     receiver_email: chatEmail,
     content: text,
     created_at: new Date().toISOString(),
   };
 
-  // ✅ 1. Show instantly in UI
+  // ✅ Show instantly
   setMessages((prev) => [...prev, newMsg]);
 
-  // ✅ 2. Save to database
-  const { error } = await supabase.from("messages").insert([
-    {
-      sender_email: user.email,
-      receiver_email: chatEmail,
-      content: text,
-    },
-  ]);
+  // ✅ Insert and get real message
+  const { data, error } = await supabase
+    .from("messages")
+    .insert([
+      {
+        sender_email: user.email,
+        receiver_email: chatEmail,
+        content: text,
+      },
+    ])
+    .select()
+    .single();
 
   if (error) {
-    console.log("Send error:", error);
+    console.log(error);
+    return;
   }
+
+  // ✅ Replace temp message with real one
+  setMessages((prev) =>
+    prev.map((m) => (m.id === tempId ? data : m))
+  );
 
   setText("");
 };
