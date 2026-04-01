@@ -96,66 +96,54 @@ useEffect(() => {
  
 
 
-  useEffect(() => {
-  supabase.auth.getSession().then(async ({ data }) => {
-    const currentUser = data.session?.user;
-    setUser(currentUser);
+useEffect(() => {
+  const handleUser = async (currentUser) => {
+    if (!currentUser) return;
 
-    if (currentUser) {
-      const name =
-        currentUser.user_metadata?.full_name ||
-        currentUser.user_metadata?.name ||
-        "User";
+    const name =
+      currentUser.user_metadata?.full_name ||
+      currentUser.user_metadata?.name ||
+      "User";
 
-      const email = currentUser.email;
+    const email = currentUser.email;
 
-      // ✅ FIX: REMOVE .single()
+    try {
       const { data: existingUser, error } = await supabase
         .from("users")
         .select("*")
         .eq("email", email);
 
-      console.log("Existing:", existingUser, error);
+      if (error) {
+        console.log("Fetch error:", error);
+        return;
+      }
 
-      // ✅ INSERT if not exists
       if (!existingUser || existingUser.length === 0) {
         await supabase.from("users").insert([
           {
-            email: email,
-            name: name,
+            email,
+            name,
           },
         ]);
       }
+    } catch (err) {
+      console.log("Error:", err);
     }
+  };
+
+  // ✅ Get session
+  supabase.auth.getSession().then(({ data }) => {
+    const currentUser = data.session?.user || null;
+    setUser(currentUser);
+    handleUser(currentUser);
   });
 
+  // ✅ Listen auth changes
   const { data: listener } = supabase.auth.onAuthStateChange(
-    async (event, session) => {
-      const currentUser = session?.user;
+    (event, session) => {
+      const currentUser = session?.user || null;
       setUser(currentUser);
-
-      if (currentUser) {
-        const name =
-          currentUser.user_metadata?.full_name ||
-          currentUser.user_metadata?.name ||
-          "User";
-
-        const email = currentUser.email;
-
-        const { data: existingUser } = await supabase
-          .from("users")
-          .select("*")
-          .eq("email", email);
-
-        if (!existingUser || existingUser.length === 0) {
-          await supabase.from("users").insert([
-            {
-              email: email,
-              name: name,
-            },
-          ]);
-        }
-      }
+      handleUser(currentUser);
     }
   );
 
