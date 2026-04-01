@@ -91,6 +91,84 @@ useEffect(() => {
     setUser(null);
   };
 
+
+
+  // user login with name displaying
+useEffect(() => {
+
+  // 🔹 STEP 1: Get current logged-in user session
+  supabase.auth.getSession().then(async ({ data }) => {
+
+    const currentUser = data.session?.user; 
+    // 👉 Get logged-in user object
+
+    setUser(currentUser); 
+    // 👉 Save user in state (used in UI)
+
+    if (currentUser) {
+      // 👉 Only run if user exists
+
+      const name = currentUser.user_metadata?.full_name;
+      // 👉 Get Google name (Mahima Khan)
+
+      const email = currentUser.email;
+      // 👉 Get email
+
+      // 🔍 STEP 2: Check if user already exists in "users" table
+      const { data: existingUser } = await supabase
+        .from("users")
+        .select("*")
+        .eq("email", email)
+        .single();
+
+      // 👉 If user NOT found → insert
+      if (!existingUser) {
+        await supabase.from("users").insert([
+          {
+            email: email,
+            name: name,
+          },
+        ]);
+      }
+    }
+  });
+
+  // 🔹 STEP 3: Listen for login/logout events
+  const { data: listener } = supabase.auth.onAuthStateChange(
+    async (event, session) => {
+
+      const currentUser = session?.user;
+      setUser(currentUser);
+
+      if (currentUser) {
+        const name = currentUser.user_metadata?.full_name;
+        const email = currentUser.email;
+
+        const { data: existingUser } = await supabase
+          .from("users")
+          .select("*")
+          .eq("email", email)
+          .single();
+
+        if (!existingUser) {
+          await supabase.from("users").insert([
+            {
+              email: email,
+              name: name,
+            },
+          ]);
+        }
+      }
+    }
+  );
+
+  // 🔹 Cleanup
+  return () => listener.subscription.unsubscribe();
+
+}, []);
+
+/*
+  --------------------------------
   // 👤 Save user to DB
   useEffect(() => {
   // ✅ Get session after redirect
@@ -109,7 +187,9 @@ useEffect(() => {
 
   return () => listener.subscription.unsubscribe();
 }, []);
+----------------------------------------
 
+  */
   // 👥 Fetch users
   const fetchUsers = async () => {
     const { data, error } = await supabase.from("users").select("email");
