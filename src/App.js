@@ -96,19 +96,66 @@ useEffect(() => {
  
 
 
-  // 👤 Save user to DB
   useEffect(() => {
-  // ✅ Get session after redirect
-  supabase.auth.getSession().then(({ data }) => {
-    console.log("Session:", data.session);
-    setUser(data.session?.user || null);
+  supabase.auth.getSession().then(async ({ data }) => {
+    const currentUser = data.session?.user;
+    setUser(currentUser);
+
+    if (currentUser) {
+      const name =
+        currentUser.user_metadata?.full_name ||
+        currentUser.user_metadata?.name ||
+        "User";
+
+      const email = currentUser.email;
+
+      // ✅ FIX: REMOVE .single()
+      const { data: existingUser, error } = await supabase
+        .from("users")
+        .select("*")
+        .eq("email", email);
+
+      console.log("Existing:", existingUser, error);
+
+      // ✅ INSERT if not exists
+      if (!existingUser || existingUser.length === 0) {
+        await supabase.from("users").insert([
+          {
+            email: email,
+            name: name,
+          },
+        ]);
+      }
+    }
   });
 
-  // ✅ Listen for auth changes
   const { data: listener } = supabase.auth.onAuthStateChange(
-    (event, session) => {
-      console.log("Auth event:", event);
-      setUser(session?.user || null);
+    async (event, session) => {
+      const currentUser = session?.user;
+      setUser(currentUser);
+
+      if (currentUser) {
+        const name =
+          currentUser.user_metadata?.full_name ||
+          currentUser.user_metadata?.name ||
+          "User";
+
+        const email = currentUser.email;
+
+        const { data: existingUser } = await supabase
+          .from("users")
+          .select("*")
+          .eq("email", email);
+
+        if (!existingUser || existingUser.length === 0) {
+          await supabase.from("users").insert([
+            {
+              email: email,
+              name: name,
+            },
+          ]);
+        }
+      }
     }
   );
 
