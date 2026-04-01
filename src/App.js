@@ -279,8 +279,7 @@ useEffect(() => {
       (payload) => {
         const msg = payload.new;
 
-        // ❌ IGNORE your own messages
-if (msg.sender_email === user.email) return;
+       
 
 // ✅ Only receive messages from selected user
 //if (
@@ -290,7 +289,7 @@ if (msg.sender_email === user.email) return;
 //  setMessages((prev) => [...prev, msg]);
 //} 
   // ❌ Ignore your own messages
-if (msg.sender_email === user.email) return;
+
 
 // ✅ If message is from currently open chat → show in chat
 if (
