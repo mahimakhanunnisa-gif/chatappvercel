@@ -369,11 +369,9 @@ body, html {
   box-shadow: 0 6px 14px rgba(0,0,0,0.3);
   background: #2a3942;
 }
+
 .activeUser {
-  border: 1px solid #25d366;
-  background: #2a3942;
-}
-.activeUser {
+  border-left: 4px solid #25d366;
   border: 1px solid #25d366;
   background: #2a3942;
 }
