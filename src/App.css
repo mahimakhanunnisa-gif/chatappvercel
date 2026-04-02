@@ -54,7 +54,7 @@ body, html {
 
 /* Logout */
 .logoutBtn {
- margin: 8px 5px 5px 5px;  /* 🔽 reduced bottom gap */
+ margin: 2px 5px 5px 5px;  /* 🔽 reduced bottom gap */
   padding: 8px;
   background: #ff4d4d;
   border: none;
