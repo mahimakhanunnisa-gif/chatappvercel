@@ -325,7 +325,7 @@ useEffect(() => {
       { event: "INSERT", schema: "public", table: "messages" },
       (payload) => {
         const msg = payload.new;
-
+        fetchUsers();
        
 
 // ✅ Only receive messages from selected user
