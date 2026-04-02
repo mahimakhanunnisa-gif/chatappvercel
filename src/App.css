@@ -435,10 +435,10 @@ body, html {
   color: white;
 }
 .activeUser {
-  border-left: 4px solid #25d366;
-  border-right: 1px solid #25d366;
-  border-top: 1px solid #25d366;
-  border-bottom: 1px solid #25d366;
+  border-left: 8px solid #25d366;
+  border-right: 3px solid #25d366;
+  border-top: 3px solid #25d366;
+  border-bottom: 3px solid #25d366;
   background: #486171;
 }
 .unreadUser {
