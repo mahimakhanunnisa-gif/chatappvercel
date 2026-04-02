@@ -344,6 +344,7 @@ if (
   msg.receiver_email === user.email
 ) {
   setMessages((prev) => [...prev, msg]);
+  fetchUsers();
 } else {
   // 🟢 NEW: mark as unread
   setUnreadUsers((prev) => {
