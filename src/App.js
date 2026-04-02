@@ -472,7 +472,7 @@ if (msg.receiver_email === user.email) {
   >
     <div className="userInfo">
       <div className="userName">{u.name || "User"}</div>
-      <div className="userEmailSmall">({u.email})</div>
+      {/* <div className="userEmailSmall">({u.email})</div>*/}
     </div>
   </div>
 ))}
