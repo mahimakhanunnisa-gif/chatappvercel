@@ -386,7 +386,11 @@ body, html {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #25d366, #128c7e);
+  background: linear-gradient(
+  135deg,
+  hsl(var(--hue), 70%, 50%),
+  hsl(calc(var(--hue) + 40), 70%, 40%)
+);
   display: flex;
   align-items: center;
   justify-content: center;
