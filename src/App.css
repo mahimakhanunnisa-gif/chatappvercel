@@ -379,6 +379,20 @@ body, html {
   transition: all 0.3s ease;
   border-bottom: 1px solid rgba(255,255,255,0.05);
 }
+.avatarCircle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
 /*
 .userCard {
   background: #202c33;
