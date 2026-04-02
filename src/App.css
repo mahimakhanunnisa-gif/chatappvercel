@@ -376,6 +376,7 @@ body, html {
   margin: 4px 2px;
   padding: 10px;
   margin: 0;
+  gap:12px;
   display: flex;
   border-radius: 6px;
   cursor: pointer;
