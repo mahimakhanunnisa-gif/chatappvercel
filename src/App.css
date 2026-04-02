@@ -29,7 +29,7 @@ body, html {
   overflow: hidden; /* important */
 }
 .sidebar h2 {
-  margin: 5px 0 5px 0;  /* 🔽 tighter spacing */
+  margin: 0px 5px 0px 0;  /* 🔽 tighter spacing */
 }
 .usersList {
   flex: 1;
