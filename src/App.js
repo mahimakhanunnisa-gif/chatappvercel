@@ -455,12 +455,27 @@ if (msg.receiver_email === user.email) {
         <h2>Users</h2>
 
         {users.map((u, i) => (
-          <div
-            key={i}
-          className={`user 
-  ${chatEmail === u.email ? "activeUser" : ""} 
-  ${unreadUsers.includes(u.email) ? "unreadUser" : ""}
-`}
+  <div
+    key={i}
+    className={`userCard 
+      ${chatEmail === u.email ? "activeUser" : ""} 
+      ${unreadUsers.includes(u.email) ? "unreadUser" : ""}
+    `}
+    onClick={() => {
+      setChatEmail(u.email);
+
+      // remove unread highlight
+      setUnreadUsers((prev) =>
+        prev.filter((email) => email !== u.email)
+      );
+    }}
+  >
+    <div className="userInfo">
+      <div className="userName">{u.name || "User"}</div>
+      <div className="userEmailSmall">({u.email})</div>
+    </div>
+  </div>
+))}
   onClick={() => {
   setChatEmail(u.email);
 
