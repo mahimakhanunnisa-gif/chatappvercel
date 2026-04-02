@@ -371,6 +371,7 @@ body, html {
 }*/
 .userCard {
   background: #1f2c34;
+  align-items: center;
   margin: 8px 5px;
   padding: 10px;
   margin: 0;
