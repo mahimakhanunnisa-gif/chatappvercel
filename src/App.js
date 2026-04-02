@@ -453,7 +453,7 @@ if (msg.receiver_email === user.email) {
         </button>
 
         <h2>Users</h2>
-
+<div className="usersList">
 {users.map((u, i) => (
   <div
     key={i}
@@ -476,6 +476,7 @@ if (msg.receiver_email === user.email) {
     </div>
   </div>
 ))}
+  </div>
       </div>
 
       {/* Chat */}
