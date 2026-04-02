@@ -373,9 +373,10 @@ body, html {
   display: flex;
   background: #1f2c34;
   align-items: center;
-  margin: 8px 5px;
+  margin: 4px 2px;
   padding: 10px;
   margin: 0;
+  display: flex;
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s ease;
