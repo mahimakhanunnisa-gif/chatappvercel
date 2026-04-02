@@ -477,6 +477,11 @@ const getInitials = (name) => {
       );
     }}
   >
+    {/* 🖼 Avatar */}
+    <div className="avatarCircle">
+      {getInitials(u.name)}
+    </div>
+       {/* 🖼 Info */}
     <div className="userInfo">
       <div className="userName">{u.name || "User"}</div>
       {/* <div className="userEmailSmall">({u.email})</div>*/}
