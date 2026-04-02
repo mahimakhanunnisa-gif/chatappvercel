@@ -13,17 +13,25 @@ body, html {
 .app {
   display: flex;
   height: 100dvh;
-   
+  overflow: hidden; /* ✅ prevents overflow issues */
 }
 
 /* Sidebar */
 .sidebar {
   width: 30%;
+  min-width: 250px;
+  max-width: 350px;
   background: #111b21;
   color: white;
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  height: 100%;
+  overflow: hidden; /* important */
+}
+.usersList {
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 10px;
 }
 
 /* Profile */
@@ -64,15 +72,22 @@ body, html {
   background: #2a3942;
 }
 
-/* Chat section */
+/* Chat section 
 .chat {
   width: 70%;
   display: flex;
   flex-direction: column;
   background: #efeae2;
  display: flex;
-  flex-direction: column;
   height: 100vh;
+}*/
+.chat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #efeae2;
+  height: 100%;
+  overflow: hidden;
 }
 .userProfile {
   margin-bottom: 15px;
@@ -107,7 +122,6 @@ body, html {
 /* Messages */
 .messages {
   flex: 1;
-  padding: 15px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -138,7 +152,6 @@ body, html {
 .inputBox {
   display: flex;
   padding: 10px;
-  background: #202c33;
   background: white;
   border-top: 1px solid #ddd;
   position: sticky;
@@ -354,11 +367,11 @@ body, html {
 }*/
 .userCard {
   background: #1f2c34;
-  margin: 8px 0;
+  margin: 8px 5px;
   padding: 12px;
   border-radius: 6px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: 0.3s ease;
 }
 /*
 .userCard {
@@ -372,8 +385,8 @@ body, html {
 }
 */
 .userCard:hover {
-  transform: translateY(-2px);
   background: #2a3942;
+  transform: scale(1.02);
 }
 /* Hover animation 
 .userCard:hover {
@@ -387,11 +400,7 @@ body, html {
   flex-direction: column;
 }
 
-.userName {
-  font-size: 15px;
-  font-weight: bold;
-  color: white;
-}
+
 .userName {
   font-size: 15px;
   font-weight: bold;
@@ -432,5 +441,27 @@ body, html {
   }
   100% {
     left: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .sidebar {
+    width: 35%;
+    min-width: 120px;
+  }
+
+  .chat {
+    width: 65%;
+  }
+
+  .userName {
+    font-size: 12px;
+  }
+
+  .userEmailSmall {
+    font-size: 10px;
+  }
+
+  .inputBox input {
+    font-size: 12px;
   }
 }
