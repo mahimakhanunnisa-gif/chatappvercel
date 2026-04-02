@@ -373,9 +373,8 @@ body, html {
   display: flex;
   background: #1f2c34;
   align-items: center;
-  margin: 4px 5px 2px px;
-  padding: 10px;
-  
+  margin: 4px 5px 2px 5px;
+  padding: 0px;
   gap:10px;
   display: flex;
   border-radius: 6px;
@@ -390,8 +389,7 @@ body, html {
   background: linear-gradient(
   135deg,
   hsl(var(--hue), 70%, 50%),
-  hsl(calc(var(--hue) + 40), 70%, 40%)
-);
+  hsl(calc(var(--hue) + 40), 70%, 40%));
   display: flex;
   align-items: center;
   justify-content: center;
