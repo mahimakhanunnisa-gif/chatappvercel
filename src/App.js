@@ -478,7 +478,9 @@ const getInitials = (name) => {
     }}
   >
     {/* 🖼 Avatar */}
-    <div className="avatarCircle">
+    <div className="avatarCircle"
+      style={{ "--hue": u.name?.length * 40 }}
+>
       {getInitials(u.name)}
     </div>
        {/* 🖼 Info */}
