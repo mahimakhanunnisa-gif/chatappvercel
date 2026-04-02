@@ -98,11 +98,13 @@ body, html {
 }
 
 .userName {
+  margin: 8px 5px 5px 5px;
   font-size: 12px;
   font-weight: bold;
 }
 
 .userEmail {
+   margin: 8px 5px 5px 5px;
   font-size: 12px;
   color: gray;
 }
