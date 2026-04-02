@@ -476,7 +476,6 @@ if (msg.receiver_email === user.email) {
     </div>
   </div>
 ))}
-        ))}
       </div>
 
       {/* Chat */}
