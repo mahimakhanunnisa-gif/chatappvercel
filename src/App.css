@@ -372,7 +372,7 @@ body, html {
 
 .activeUser {
   border-left: 4px solid #25d366;
-  border: 1px solid #25d366;
+  border-right: 1px solid #25d366;
   background: #2a3942;
 }
 .unreadUser {
