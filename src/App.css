@@ -370,6 +370,7 @@ body, html {
   color:black;
 }*/
 .userCard {
+  display: flex;
   background: #1f2c34;
   align-items: center;
   margin: 8px 5px;
