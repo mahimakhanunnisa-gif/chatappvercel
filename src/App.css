@@ -353,8 +353,57 @@ body, html {
   color:black;
 }*/
 
-.unreadUser::after {
-  content: "●";
-  color: green;
-  float: right;
+.userCard {
+  background: #202c33;
+  padding: 12px;
+  margin: 6px 0;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+/* Hover animation */
+.userCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+  background: #2a3942;
+}
+.activeUser {
+  border: 1px solid #25d366;
+  background: #2a3942;
+}
+.activeUser {
+  border: 1px solid #25d366;
+  background: #2a3942;
+}
+.unreadUser {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shimmer animation */
+.unreadUser::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(37, 211, 102, 0.25),
+    transparent
+  );
+  animation: shimmer 1.8s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
 }
