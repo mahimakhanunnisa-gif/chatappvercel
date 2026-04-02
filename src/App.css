@@ -79,7 +79,7 @@ body, html {
 }
 
 .userName {
-  font-size: 18px;
+  font-size: 12px;
   font-weight: bold;
 }
 
@@ -352,7 +352,15 @@ body, html {
   font-weight: bold;
   color:black;
 }*/
-
+.userCard {
+  background: #1f2c34;
+  margin: 8px 0;
+  padding: 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+/*
 .userCard {
   background: #202c33;
   padding: 12px;
@@ -362,14 +370,33 @@ body, html {
   transition: all 0.3s ease;
   border: 1px solid transparent;
 }
-
-/* Hover animation */
+*/
+.userCard:hover {
+  transform: translateY(-2px);
+  background: #2a3942;
+}
+/* Hover animation 
 .userCard:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 14px rgba(0,0,0,0.3);
   background: #2a3942;
 }
+*/
+.userInfo {
+  display: flex;
+  flex-direction: column;
+}
 
+.userName {
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+}
+.userName {
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+}
 .activeUser {
   border-left: 4px solid #25d366;
   border-right: 1px solid #25d366;
