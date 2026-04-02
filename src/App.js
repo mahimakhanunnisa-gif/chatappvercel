@@ -314,7 +314,7 @@ const deleteMessage = async () => {
 */
 
 useEffect(() => {
-  if (!chatEmail || !user) return;
+  if (!user) return;
 
   fetchMessages(chatEmail);
 
@@ -327,7 +327,29 @@ useEffect(() => {
         const msg = payload.new;
         fetchUsers();
        
+// ❌ Ignore your own messages
+if (msg.sender_email === user.email) return;
 
+// ✅ If message is for YOU
+if (msg.receiver_email === user.email) {
+
+  // 👉 If chat is OPEN → show message
+  if (msg.sender_email === chatEmail) {
+    setMessages((prev) => {
+      const exists = prev.find((m) => m.id === msg.id);
+      if (exists) return prev;
+      return [...prev, msg];
+    });
+  }
+
+  // 👉 If chat NOT open → highlight user
+  else {
+    setUnreadUsers((prev) => {
+      if (prev.includes(msg.sender_email)) return prev;
+      return [...prev, msg.sender_email];
+    });
+  }
+}
 // ✅ Only receive messages from selected user
 //if (
 //  msg.sender_email === chatEmail &&
@@ -339,7 +361,8 @@ useEffect(() => {
 
 
 // ✅ If message is from currently open chat → show in chat
-if (
+/*
+        if (
   msg.sender_email === chatEmail &&
   msg.receiver_email === user.email
 ) {
@@ -351,7 +374,8 @@ if (
     if (prev.includes(msg.sender_email)) return prev;
     return [...prev, msg.sender_email];
   });
-}      
+}    
+*/
         
         {
          setMessages((prev) => {
