@@ -374,7 +374,7 @@ body, html {
   background: #1f2c34;
   align-items: center;
   margin: 4px 5px 2px 5px;
-  padding: 0px;
+  padding: 5px;
   gap:10px;
   display: flex;
   border-radius: 6px;
