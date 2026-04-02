@@ -123,7 +123,9 @@ useEffect(() => {
 
   // 👥 Fetch users
   const fetchUsers = async () => {
-  const { data, error } = await supabase
+
+  // 👉 1. Get all users
+  const { data: usersData, error } = await supabase
     .from("users")
     .select("email, name");
 
@@ -132,9 +134,54 @@ useEffect(() => {
     return;
   }
 
-  if (data) {
-    setUsers(data.filter((u) => u.email !== user?.email));
-  }
+  // 👉 2. Get all messages
+  const { data: messagesData } = await supabase
+    .from("messages")
+    .select("sender_email, receiver_email, created_at");
+
+  // 👉 3. Create empty object to store last message time
+  const lastMessageMap = {};
+
+  // 👉 4. Loop through all messages
+  messagesData.forEach((msg) => {
+
+    // Check if message belongs to current user
+    if (
+      msg.sender_email === user.email ||
+      msg.receiver_email === user.email
+    ) {
+
+      // Find the OTHER user
+      const otherUser =
+        msg.sender_email === user.email
+          ? msg.receiver_email
+          : msg.sender_email;
+
+      // Save latest message time
+      const existingTime = lastMessageMap[otherUser];
+
+      if (
+        !existingTime ||
+        new Date(msg.created_at) > new Date(existingTime)
+      ) {
+        lastMessageMap[otherUser] = msg.created_at;
+      }
+    }
+  });
+
+  // 👉 5. Sort users based on latest message
+  const sortedUsers = usersData
+    .filter((u) => u.email !== user.email) // remove self
+    .sort((a, b) => {
+
+      const timeA = lastMessageMap[a.email] || 0;
+      const timeB = lastMessageMap[b.email] || 0;
+
+      return new Date(timeB) - new Date(timeA);
+    });
+
+  // 👉 6. Update UI
+  setUsers(sortedUsers);
 };
 
   useEffect(() => {
