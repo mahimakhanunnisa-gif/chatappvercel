@@ -560,6 +560,6 @@ body, html {
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s ease;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 4px solid rgba(255,255,255,0.05);
 }
 }
