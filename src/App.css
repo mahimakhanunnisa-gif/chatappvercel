@@ -37,6 +37,8 @@ body, html {
   flex: 1;
   overflow-y: auto;
   margin-top: 10px;
+  padding-bottom: 20px; /* ✅ space for last item */
+  margin-bottom: 10px;
 }
 
 /* Profile */
