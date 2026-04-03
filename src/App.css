@@ -167,6 +167,7 @@ body, html {
 
 .inputBox input {
   flex: 1;
+  font-size:15px;
   padding: 4px 4px;
   border-radius: 8px;
   border: none;
@@ -537,5 +538,9 @@ body, html {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+}
+  .sendIcon {
+  width: 20px;
+  height: 25px;
 }
 }
