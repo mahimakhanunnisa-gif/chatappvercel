@@ -543,4 +543,17 @@ body, html {
   width: 20px;
   height: 25px;
 }
+  .userCard {
+  display: flex;
+  background: #1f2c34;
+  align-items: center;
+  margin: 0px 1px 2px 1px;
+  padding: 5px;
+  gap:3px;
+  display: flex;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
 }
