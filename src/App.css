@@ -117,12 +117,13 @@ body, html {
 }*/
 .chatHeader {
   position: sticky;
-  top: 0;
+  top: env(safe-area-inset-top, 10px);
   background: #ffffff;
-  padding: 12px;
+  padding: 14px 16px;
   font-weight: bold;
   border-bottom: 1px solid #ddd;
   z-index: 10;
+   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 /* Messages */
