@@ -3,6 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 import "./App.css";
 import deleteIcon from "./assets/delete.png";
 import logo from "./assets/logo.png";
+import sendIcon from "./assets/send.svg";
 
 const supabase = createClient(
   "https://rmmnxjuofthqugkrwmqf.supabase.co",
@@ -544,7 +545,9 @@ const getInitials = (name) => {
               onChange={(e) => setText(e.target.value)}
               placeholder="Type a message..."
             />
-            <button onClick={sendMessage}>Send</button>
+            <button onClick={sendMessage} className="sendBtn">
+  <img src={sendIcon} alt="send" className="sendIcon" />
+</button>
           </div>
         )}
       </div>
