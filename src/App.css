@@ -472,6 +472,7 @@ body, html {
 .unreadUser {
   position: relative;
   overflow: hidden;
+  box-shadow: 0 0 8px rgba(50, 255, 100, 0.6); /* 💚 glow */
 }
 
 /* Shimmer animation */
@@ -485,7 +486,7 @@ body, html {
   background: linear-gradient(
     120deg,
     transparent,
-    rgba(0, 255, 128, 0.3),
+   rgba(50, 255, 100, 0.7),
     transparent
   );
   animation: shimmer 1.8s infinite;
