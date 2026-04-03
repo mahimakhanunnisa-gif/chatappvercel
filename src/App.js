@@ -546,7 +546,7 @@ const getInitials = (name) => {
               placeholder="Type a message..."
             />
             <button onClick={sendMessage} className="sendBtn">
-  <img src={sendIcon} alt="send" className="sendIcon" />
+  <img src={sendIcon} alt="" className="sendIcon" />
 </button>
           </div>
         )}
