@@ -505,7 +505,7 @@ body, html {
   .sidebar {
     width: 35%;
     min-width: 120px;
-     padding: 10px 10px 5px 10px; /* reduce bottom padding */
+     padding: 10px 1px 5px 1px; /* reduce bottom padding */
   }
 
   .chat {
@@ -560,6 +560,6 @@ body, html {
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s ease;
-  border-bottom: 4px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 }
