@@ -521,9 +521,21 @@ body, html {
 
   .inputBox input {
     padding:2px;
-    font-size: 12px;
+    font-size: 15px;
   }
   .chatHeader {
     top: 15px; /* ✅ extra gap for mobile browser UI */
   }
+  .sendBtn {
+  margin-left: 5px;
+  width: 30px;
+  height: 35px;
+  border: none;
+  background: green;
+  border-radius: 40%; /* ✅ circular button */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
 }
