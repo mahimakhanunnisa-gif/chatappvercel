@@ -217,6 +217,7 @@ body, html {
 /* Highlight selected user */
 .activeUser {
   background: #2a3942;
+   background: rgba(37, 211, 102, 0.15);
   border-left: 4px solid #25d366;
 }
 
