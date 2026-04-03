@@ -173,7 +173,7 @@ body, html {
   outline: none;
   border: 1px solid #ccc;
 }
-
+/*
 .inputBox button {
   margin-left: 10px;
   padding: 5px 10px;
@@ -183,7 +183,7 @@ body, html {
   border-radius: 8px;
   cursor: pointer;
 }
-
+*/
 .sendBtn {
   margin-left: 10px;
   width: 45px;
@@ -200,7 +200,7 @@ body, html {
 /* SVG icon */
 .sendIcon {
   width: 20px;
-  height: 20px;
+  height: 10px;
 }
 
 .sendBtn:hover {
