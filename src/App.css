@@ -27,6 +27,8 @@ body, html {
   flex-direction: column;
   height: 100%;
   overflow: hidden; /* important */
+  overflow-y: auto;     /* ✅ allow scrolling */
+  padding-bottom: 20px; /* ✅ important: space for last item */
 }
 .sidebar h2 {
   margin: 0px 5px 0px 5px;  /* 🔽 tighter spacing */
