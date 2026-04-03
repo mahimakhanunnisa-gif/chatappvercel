@@ -543,12 +543,18 @@ body, html {
   width: 20px;
   height: 25px;
 }
+  .user {
+  padding: 3px;
+  cursor: pointer;
+  border-bottom: 1px solid #2a3942;
+  transition: 0.2s;
+}
   .userCard {
   display: flex;
   background: #1f2c34;
   align-items: center;
   margin: 1px 1px 2px 1px;
-  padding: 0px;
+  padding: 1px;
   gap:3px;
   display: flex;
   border-radius: 6px;
