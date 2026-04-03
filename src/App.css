@@ -494,4 +494,7 @@ body, html {
   .inputBox input {
     font-size: 12px;
   }
+  .chatHeader {
+    top: 15px; /* ✅ extra gap for mobile browser UI */
+  }
 }
