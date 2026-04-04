@@ -113,12 +113,7 @@ body, html {
   color: gray;
 }
 /* Chat header 
-.chatHeader {
-  padding: 15px;
-  background: #202c33;
-  color: white;
-  font-weight: bold;
-}*/
+old chatheader
 .chatHeader {
   position: sticky;
   top: env(safe-area-inset-top, 19px);
@@ -128,14 +123,30 @@ body, html {
   border-bottom: 1px solid #ddd;
   z-index: 10;
    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-  /* ✅ FIX STARTS HERE */
-  word-break: break-all;
-  overflow-wrap: break-word;
-  white-space: normal;
   font-size: 14px;
-  .chatHeader {
   max-width: 100%;
-}
+}*/
+.chatHeader {
+  position: sticky;
+  top: 0; /* 🔥 FIX: remove env() */
+
+  background: #ffffff;
+  padding: 12px 10px;
+  border-bottom: 1px solid #ddd;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  /* 🔥 KEY FIXES */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  min-height: 50px; /* prevents vertical clipping */
+   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 .chatSubEmail {
   font-size: 11px;
