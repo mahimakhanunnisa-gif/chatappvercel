@@ -500,7 +500,7 @@ const getInitials = (name) => {
   {chatEmail && (
     <div className="chatHeader">
   {users.find(u => u.email === chatEmail)?.name || chatEmail}
-  <div className="chatSubEmail">{chatEmail}</div>
+  <span className="chatSubEmail">{chatEmail}</span>
 </div>
   )}
         <div className="messages">
