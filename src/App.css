@@ -543,6 +543,7 @@ old chatheader
     width: 35%;
     min-width: 120px;
      padding: 0px 1px 5px 1px; /* reduce bottom padding */
+    margin-top:0px;
   }
 
   .chat {
