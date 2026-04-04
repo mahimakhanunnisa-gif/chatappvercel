@@ -244,7 +244,8 @@ old chatheader
 }
 .activeUser {
   background: rgba(37, 211, 102, 0.15);
-  box-shadow: 0 0 0 2px #25d366 inset; /* ✅ clean border */
+  box-shadow: -8px 0 0 0 #25d366 inset;
+ /* box-shadow: 0 0 0 2px #25d366 inset;  ✅ clean border */
   border-radius: 8px;
 }
 /* Highlight selected user 
