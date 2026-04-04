@@ -134,6 +134,12 @@ body, html {
   white-space: normal;
   font-size: 14px;
 }
+.chatSubEmail {
+  font-size: 11px;
+  color: gray;
+  margin-top: 2px;
+  word-break: break-all;
+}
 
 /* Messages */
 .messages {
