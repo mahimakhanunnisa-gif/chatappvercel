@@ -621,7 +621,7 @@ old chatheader
   
   .chatHeader {
   position: sticky;
-/*  top: env(safe-area-inset-top, 19px); */
+top: env(safe-area-inset-top, 19px); 
   background: #ffffff;
   padding: 14px 8px 2px 8px;
   font-weight: bold;
