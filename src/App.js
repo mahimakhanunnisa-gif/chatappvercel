@@ -498,9 +498,8 @@ const getInitials = (name) => {
       <div className="chat">
          {/* ✅ NEW STICKY HEADER */}
   {chatEmail && (
-    <div className="chatHeader">
-  {users.find(u => u.email === chatEmail)?.name || chatEmail}
-  <span className="chatSubEmail">{chatEmail}</span>
+   <div className="chatHeader">
+  {chatEmail}
 </div>
   )}
         <div className="messages">
