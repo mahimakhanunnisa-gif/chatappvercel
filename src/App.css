@@ -244,7 +244,12 @@ old chatheader
 }
 .activeUser {
   background: rgba(37, 211, 102, 0.15);
-  box-shadow: -8px 0 0 0 #25d366 inset;
+  box-shadow: 
+    inset 2px 0 0 0 #25d366,  /* Right side */
+    inset 0 2px 0 0 #25d366,  /* Top side */
+    inset 0 -2px 0 0 #25d366, /* Bottom side */
+    inset 8px 0 0 0 #25d366;  /* Left side */
+ /* box-shadow: -8px 0 0 0 #25d366 inset; */
  /* box-shadow: 0 0 0 2px #25d366 inset;  ✅ clean border */
   border-radius: 8px;
 }
