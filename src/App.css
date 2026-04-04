@@ -133,6 +133,9 @@ body, html {
   overflow-wrap: break-word;
   white-space: normal;
   font-size: 14px;
+  .chatHeader {
+  max-width: 100%;
+}
 }
 .chatSubEmail {
   font-size: 11px;
