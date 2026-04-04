@@ -138,8 +138,9 @@ old chatheader
   font-size: 14px;
   font-weight: 500;
 
-  /* white-space: nowrap;🔥 KEY FIXES */
-  overflow: hidden;
+  /* white-space: nowrap;
+  overflow: hidden;🔥 KEY FIXES */
+  
   
   text-overflow: ellipsis;
   min-height: 30px; /* prevents vertical clipping */
