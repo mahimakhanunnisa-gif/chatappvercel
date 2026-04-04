@@ -492,6 +492,7 @@ old chatheader
 .userInfo {
   display: flex;
   flex-direction: column;
+  min-width: 0; /* 🔥 VERY IMPORTANT */
 }
 
 
@@ -632,4 +633,11 @@ top: env(safe-area-inset-top, 19px);
   font-size: 14px;
   max-width: 100%;
 }
+}
+@media (min-width: 769px) {
+  .userName {
+    white-space: nowrap;       /* ✅ force single line */
+    overflow: hidden;          /* ✅ hide extra text */
+    text-overflow: ellipsis;   /* ✅ show ... */
+  }
 }
