@@ -178,6 +178,7 @@ old chatheader
   margin: 5px 0;
   border-radius: 8px;
   max-width: 100%;
+   width: fit-content;
 }
 /* Sent */
 .sent {
