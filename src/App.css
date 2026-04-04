@@ -546,7 +546,7 @@ old chatheader
   }
 
   .chat {
-    width: 100%;
+    width: 65%;
   }
 
   .userName {
@@ -595,7 +595,8 @@ old chatheader
   display: flex;
   background: #1f2c34;
   align-items: center;
-  margin: 1px 1px 2px 1px;
+ /* margin: 1px 1px 2px 1px;*/
+    margin: 6px 4px;   /* ✅ more breathing space */
   padding: 1px;
   gap:3px;
   display: flex;
@@ -604,6 +605,11 @@ old chatheader
   transition: all 0.3s ease;
   border-bottom: 1px solid rgba(255,255,255,0.05);
 }
+   .activeUser {
+    outline: 2px solid #25d366;  /* ✅ visible on all sides */
+    outline-offset: 0;
+  }
+  
   .chatHeader {
   position: sticky;
   top: env(safe-area-inset-top, 19px);
