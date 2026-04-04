@@ -166,14 +166,19 @@ old chatheader
   padding: 10px;
 }
 
-/* Message bubble */
+/* old---Message bubble 
 .message {
   padding: 5px;
   margin: 5px 0;
   border-radius: 8px;
   max-width: 60%;
+} */
+.message {
+  padding: 5px;
+  margin: 5px 0;
+  border-radius: 8px;
+  max-width: 100%;
 }
-
 /* Sent */
 .sent {
   align-self: flex-end;
