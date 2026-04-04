@@ -129,16 +129,13 @@ old chatheader
 .chatHeader {
   position: sticky;
   top: 0; /* 🔥 FIX: remove env() */
-
   background: #ffffff;
   padding: 12px 10px 2px 10px;
   margin-bottom:2px;
   border-bottom: 1px solid #ddd;
   z-index: 10;
-
   display: flex;
   align-items: center;
-
   font-size: 14px;
   font-weight: 500;
 
@@ -146,7 +143,7 @@ old chatheader
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  min-height: 50px; /* prevents vertical clipping */
+  min-height: 30px; /* prevents vertical clipping */
    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 .chatSubEmail {
