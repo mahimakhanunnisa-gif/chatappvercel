@@ -544,6 +544,9 @@ old chatheader
     min-width: 120px;
     padding: 0px 1px 1px 1px; /* reduce bottom padding */
   }
+  .usersList {
+    padding-bottom: 30px;
+  }
 
   .chat {
     width: 65%;
@@ -597,7 +600,7 @@ old chatheader
   align-items: center;
  /* margin: 1px 1px 2px 1px;*/
     margin: 6px 4px;   /* ✅ more breathing space */
-  padding: 1px;
+  padding: 6px;
   gap:3px;
   display: flex;
   border-radius: 6px;
@@ -608,6 +611,7 @@ old chatheader
    .activeUser {
     outline: 2px solid #25d366;  /* ✅ visible on all sides */
     outline-offset: 0;
+     box-shadow: 0 0 0 2px #25d366 inset;
   }
   
   .chatHeader {
