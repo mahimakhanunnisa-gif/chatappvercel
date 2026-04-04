@@ -12,7 +12,7 @@ body, html {
 /* Layout */
 .app {
   display: flex;
-  height: 100dvh;
+  height: 100vh;
   overflow: hidden; /* ✅ prevents overflow issues */
 }
 
@@ -529,6 +529,11 @@ old chatheader
   }
 }
 @media (max-width: 768px) {
+  .app {
+  display: flex;
+  height: 100dvh;
+  overflow: hidden; /* ✅ prevents overflow issues */
+}
   .sidebar {
     width: 35%;
     min-width: 120px;
