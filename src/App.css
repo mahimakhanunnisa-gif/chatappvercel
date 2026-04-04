@@ -542,11 +542,11 @@ old chatheader
   .sidebar {
     width: 35%;
     min-width: 120px;
-     padding: 0px 1px 1px 1px; /* reduce bottom padding */
+    padding: 0px 1px 1px 1px; /* reduce bottom padding */
   }
 
   .chat {
-    width: 65%;
+    width: 100%;
   }
 
   .userName {
