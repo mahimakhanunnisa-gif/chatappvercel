@@ -14,8 +14,9 @@ const supabase = createClient(
 export default function App() {
   const [user, setUser] = useState(null);
   const [users, setUsers] = useState([]);
-  const [unreadUsers, setUnreadUsers] = useState([]);
+ // const [unreadUsers, setUnreadUsers] = useState([]);
   const [chatEmail, setChatEmail] = useState("");
+  const [unreadUsers, setUnreadUsers] = useState({});
   const [messages, setMessages] = useState([]);
   const [text, setText] = useState("");
   const messagesEndRef = useRef(null);
@@ -61,11 +62,6 @@ useEffect(() => {
     console.log("Logout error:", err);
   }
 };
-
-
-
- 
-
 
 useEffect(() => {
   const handleUser = async (currentUser) => {
