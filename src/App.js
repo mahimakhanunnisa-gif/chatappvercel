@@ -182,8 +182,29 @@ useEffect(() => {
 };
 
   useEffect(() => {
-    if (user) fetchUsers();
-  }, [user]);
+  if (!user) return;
+
+  fetchUsers();
+  checkUnreadMessages();   // 🔥 ADD THIS LINE
+}, [user]);
+  const checkUnreadMessages = async () => {
+  const { data } = await supabase
+    .from("messages")
+    .select("sender_email, receiver_email")
+    .eq("receiver_email", user.email);
+
+  if (!data) return;
+
+  const unreadMap = {};
+
+  data.forEach((msg) => {
+    if (msg.sender_email !== chatEmail) {
+      unreadMap[msg.sender_email] = true;
+    }
+  });
+
+  setUnreadUsers(unreadMap);
+};
 
   // 💬 Fetch messages
   const fetchMessages = async (targetEmail) => {
@@ -329,20 +350,22 @@ if (msg.sender_email === user.email) return;
 
 // ✅ If message is for YOU
 if (msg.receiver_email === user.email) {
-  // 🔥 FORCE update users list (important for first message)
-  fetchUsers();
 
+  // 🔥 ALWAYS mark unread if not open
+  if (msg.sender_email !== chatEmail) {
+    setUnreadUsers((prev) => ({
+      ...prev,
+      [msg.sender_email]: true
+    }));
+  }
+
+  // ✅ Show message if chat open
   if (msg.sender_email === chatEmail) {
     setMessages((prev) => {
       const exists = prev.find((m) => m.id === msg.id);
       if (exists) return prev;
       return [...prev, msg];
     });
-  } else {
-    setUnreadUsers((prev) => ({
-      ...prev,
-      [msg.sender_email]: true
-    }));
   }
 }
 // ✅ Only receive messages from selected user
