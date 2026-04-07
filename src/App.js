@@ -329,22 +329,20 @@ if (msg.sender_email === user.email) return;
 
 // ✅ If message is for YOU
 if (msg.receiver_email === user.email) {
+  // 🔥 FORCE update users list (important for first message)
+  fetchUsers();
 
-  // 👉 If chat is OPEN → show message
   if (msg.sender_email === chatEmail) {
     setMessages((prev) => {
       const exists = prev.find((m) => m.id === msg.id);
       if (exists) return prev;
       return [...prev, msg];
     });
-  }
-
-  // 👉 If chat NOT open → highlight user
-  else {
-    setUnreadUsers((prev) => {
-      if (prev.includes(msg.sender_email)) return prev;
-      return [...prev, msg.sender_email];
-    });
+  } else {
+    setUnreadUsers((prev) => ({
+      ...prev,
+      [msg.sender_email]: true
+    }));
   }
 }
 // ✅ Only receive messages from selected user
@@ -463,15 +461,17 @@ const getInitials = (name) => {
     key={i}
     className={`userCard 
       ${chatEmail === u.email ? "activeUser" : ""} 
-      ${unreadUsers.includes(u.email) ? "unreadUser" : ""}
+      ${unreadUsers[u.email] ? "unreadUser" : ""}
     `}
     onClick={() => {
       setChatEmail(u.email);
 
       // remove unread highlight
-      setUnreadUsers((prev) =>
-        prev.filter((email) => email !== u.email)
-      );
+      setUnreadUsers((prev) => {
+  const updated = { ...prev };
+  delete updated[u.email];
+  return updated;
+});
     }}
   >
     {/* 🖼 Avatar */}
