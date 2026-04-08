@@ -187,10 +187,43 @@ useEffect(() => {
   setUsers(sortedUsers);
 };
 
+
+const checkInitialUnread = async () => {
+  if (!user) return;
+
+  const { data } = await supabase
+    .from("messages")
+    .select("sender_email, receiver_email");
+
+  if (!data) return;
+
+  const unreadMap = {};
+
+  data.forEach((msg) => {
+    // ✅ Only messages sent TO YOU
+    if (
+      msg.receiver_email === user.email &&
+      msg.sender_email !== user.email
+    ) {
+      // ❗ Only mark unread if NOT already opened
+      const stored = JSON.parse(localStorage.getItem("readUsers")) || {};
+
+      if (!stored[msg.sender_email]) {
+        unreadMap[msg.sender_email] = true;
+      }
+    }
+  });
+
+  setUnreadUsers(unreadMap);
+};
+
+
+  
   useEffect(() => {
   if (!user) return;
 
   fetchUsers();
+    checkInitialUnread();
  // checkUnreadMessages();   // 🔥 ADD THIS LINE
 }, [user]);
  /* const checkUnreadMessages = async () => {
