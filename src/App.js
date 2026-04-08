@@ -374,7 +374,7 @@ const deleteMessage = async () => {
 useEffect(() => {
   if (!user) return;
 
-  fetchMessages(chatEmail);
+  //fetchMessages(chatEmail);
 
   const channel = supabase
     .channel("chat")
@@ -474,6 +474,12 @@ useEffect(() => {
     .subscribe();
 
   return () => supabase.removeChannel(channel);
+}, [chatEmail, user]);
+
+  useEffect(() => {
+  if (!chatEmail || !user) return;
+
+  fetchMessages(chatEmail);
 }, [chatEmail, user]);
   // 🔐 LOGIN UI (Google only)
  if (!user) {
