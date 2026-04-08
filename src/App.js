@@ -397,8 +397,10 @@ if (msg.receiver_email === user.email) {
   });
 }    
 */
-        
-        {
+
+        /*
+
+         {
   setMessages((prev) => {
     const exists = prev.find(
       (m) =>
@@ -415,6 +417,10 @@ if (msg.receiver_email === user.email) {
     return [...prev, msg];
   });
 }
+
+*/
+        
+       
       }
     )
     .on(
