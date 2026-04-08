@@ -197,26 +197,28 @@ const checkInitialUnread = async () => {
 
   if (!data) return;
 
+  // ✅ Step A: get stored read users
+  const stored = JSON.parse(localStorage.getItem("readUsers")) || {};
+
   const unreadMap = {};
 
   data.forEach((msg) => {
-    // ✅ Only messages sent TO YOU
     if (
       msg.receiver_email === user.email &&
       msg.sender_email !== user.email
     ) {
-      // ❗ Only mark unread if NOT already opened
-      const stored = JSON.parse(localStorage.getItem("readUsers")) || {};
-
+      // ✅ only mark unread if NOT already read
       if (!stored[msg.sender_email]) {
         unreadMap[msg.sender_email] = true;
       }
     }
   });
 
-  setUnreadUsers(unreadMap);
-};
+  // ✅ Step B: merge stored + new unread
+  const finalState = { ...unreadMap, ...stored };
 
+  setUnreadUsers(finalState);
+};
 
   
   useEffect(() => {
