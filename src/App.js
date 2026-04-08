@@ -41,6 +41,12 @@ const formatTime = (timestamp) => {
     year: "numeric",
   });
 };
+
+
+useEffect(() => {
+  const stored = JSON.parse(localStorage.getItem("readUsers")) || {};
+  setUnreadUsers(stored);
+}, []);
   
 useEffect(() => {
   messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -185,9 +191,9 @@ useEffect(() => {
   if (!user) return;
 
   fetchUsers();
-  checkUnreadMessages();   // 🔥 ADD THIS LINE
+ // checkUnreadMessages();   // 🔥 ADD THIS LINE
 }, [user]);
-  const checkUnreadMessages = async () => {
+ /* const checkUnreadMessages = async () => {
   const { data } = await supabase
     .from("messages")
     .select("sender_email, receiver_email")
@@ -207,7 +213,7 @@ useEffect(() => {
   });
 
   setUnreadUsers(unreadMap);
-};
+}; */
 
   // 💬 Fetch messages
   const fetchMessages = async (targetEmail) => {
@@ -365,10 +371,16 @@ if (msg.receiver_email === user.email) {
 
   // 👉 If chat NOT open → mark unread
   else {
-    setUnreadUsers((prev) => ({
-      ...prev,
-      [msg.sender_email]: true
-    }));
+    setUnreadUsers((prev) => {
+  const updated = {
+    ...prev,
+    [msg.sender_email]: true
+  };
+
+  localStorage.setItem("readUsers", JSON.stringify(updated));
+
+  return updated;
+});
   }
 }
 // ✅ Only receive messages from selected user
@@ -502,6 +514,8 @@ const getInitials = (name) => {
       setUnreadUsers((prev) => {
   const updated = { ...prev };
   delete updated[u.email];
+         // 🔥 SAVE to localStorage
+    localStorage.setItem("readUsers", JSON.stringify(updated));
   return updated;
 });
     }}
