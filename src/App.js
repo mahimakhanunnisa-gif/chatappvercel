@@ -542,18 +542,21 @@ const getInitials = (name) => {
       ${chatEmail === u.email ? "activeUser" : ""} 
       ${unreadUsers[u.email] ? "unreadUser" : ""}
     `}
-    onClick={() => {
-      setChatEmail(u.email);
+   onClick={() => {
+  setChatEmail(u.email);
 
-      // remove unread highlight
-      setUnreadUsers((prev) => {
-  const updated = { ...prev };
-  delete updated[u.email];
-         // 🔥 SAVE to localStorage
-    localStorage.setItem("readUsers", JSON.stringify(updated));
-  return updated;
-});
-    }}
+  // ✅ remove shimmer
+  setUnreadUsers((prev) => {
+    const updated = { ...prev };
+    delete updated[u.email];
+    return updated;
+  });
+
+  // ✅ SAVE last seen time (THIS IS STEP 1 IMPLEMENTATION)
+  const stored = JSON.parse(localStorage.getItem("readUsers")) || {};
+  stored[u.email] = new Date().toISOString();
+  localStorage.setItem("readUsers", JSON.stringify(stored));
+}}
   >
     {/* 🖼 Avatar */}
     <div className="avatarCircle"
