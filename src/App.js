@@ -382,37 +382,32 @@ useEffect(() => {
       "postgres_changes",
       { event: "INSERT", schema: "public", table: "messages" },
       (payload) => {
-        const msg = payload.new;
-       // fetchUsers();
-       
-// ❌ Ignore your own messages
-if (msg.sender_email === user.email) return;
+  const msg = payload.new;
 
-// ✅ Only handle messages RECEIVED by you
-if (msg.receiver_email === user.email) {
+  // ❌ Ignore your own messages
+  if (msg.sender_email === user.email) return;
 
-  // 👉 If chat is OPEN → show message
-  if (msg.sender_email === chatEmail) {
-    setMessages((prev) => {
-      const exists = prev.find((m) => m.id === msg.id);
-      if (exists) return prev;
-      return [...prev, msg];
-    });
+  // ✅ Only handle messages received by YOU
+  if (msg.receiver_email === user.email) {
+
+    // 👉 If chat is OPEN → show message
+    if (msg.sender_email === chatEmail) {
+      setMessages((prev) => {
+        const exists = prev.find((m) => m.id === msg.id);
+        if (exists) return prev;
+        return [...prev, msg];
+      });
+    }
+
+    // 👉 If chat NOT open → show shimmer
+    else {
+      setUnreadUsers((prev) => ({
+        ...prev,
+        [msg.sender_email]: true
+      }));
+    }
   }
 
-  // 👉 If chat NOT open → mark unread
-  else {
-    setUnreadUsers((prev) => {
-  // ✅ ALWAYS mark unread for NEW incoming message
-  const updated = {
-    ...prev,
-    [msg.sender_email]: true
-  };
-
-  return updated;
-});
-  }
-}
 // ✅ Only receive messages from selected user
 //if (
 //  msg.sender_email === chatEmail &&
