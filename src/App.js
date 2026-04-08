@@ -348,24 +348,24 @@ useEffect(() => {
 // ❌ Ignore your own messages
 if (msg.sender_email === user.email) return;
 
-// ✅ If message is for YOU
+// ✅ Only handle messages RECEIVED by you
 if (msg.receiver_email === user.email) {
 
-  // 🔥 ALWAYS mark unread if not open
-  if (msg.sender_email !== chatEmail) {
-    setUnreadUsers((prev) => ({
-      ...prev,
-      [msg.sender_email]: true
-    }));
-  }
-
-  // ✅ Show message if chat open
+  // 👉 If chat is OPEN → show message
   if (msg.sender_email === chatEmail) {
     setMessages((prev) => {
       const exists = prev.find((m) => m.id === msg.id);
       if (exists) return prev;
       return [...prev, msg];
     });
+  }
+
+  // 👉 If chat NOT open → mark unread
+  else {
+    setUnreadUsers((prev) => ({
+      ...prev,
+      [msg.sender_email]: true
+    }));
   }
 }
 // ✅ Only receive messages from selected user
