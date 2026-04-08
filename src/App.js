@@ -41,9 +41,6 @@ const formatTime = (timestamp) => {
     year: "numeric",
   });
 };
-useEffect(() => {
-  localStorage.clear();
-}, []);
 
 useEffect(() => {
   const stored = JSON.parse(localStorage.getItem("readUsers")) || {};
