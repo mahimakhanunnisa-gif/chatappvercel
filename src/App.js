@@ -404,14 +404,17 @@ if (msg.receiver_email === user.email) {
   // 👉 If chat NOT open → mark unread
   else {
     setUnreadUsers((prev) => {
-  const updated = {
-    ...prev,
-    [msg.sender_email]: true
-  };
+  const stored = JSON.parse(localStorage.getItem("readUsers")) || {};
+  const lastSeen = stored[msg.sender_email];
 
-  localStorage.setItem("readUsers", JSON.stringify(updated));
+  if (!lastSeen || new Date(msg.created_at) > new Date(lastSeen)) {
+    return {
+      ...prev,
+      [msg.sender_email]: true
+    };
+  }
 
-  return updated;
+  return prev;
 });
   }
 }
