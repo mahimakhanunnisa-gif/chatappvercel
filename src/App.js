@@ -193,13 +193,11 @@ const checkInitialUnread = async () => {
 
   const { data } = await supabase
     .from("messages")
-    .select("sender_email, receiver_email");
+    .select("sender_email, receiver_email, created_at");
 
   if (!data) return;
 
-  // ✅ Step A: get stored read users
   const stored = JSON.parse(localStorage.getItem("readUsers")) || {};
-
   const unreadMap = {};
 
   data.forEach((msg) => {
@@ -207,17 +205,16 @@ const checkInitialUnread = async () => {
       msg.receiver_email === user.email &&
       msg.sender_email !== user.email
     ) {
-      // ✅ only mark unread if NOT already read
-      if (!stored[msg.sender_email]) {
+      const lastSeen = stored[msg.sender_email];
+
+      // ✅ ONLY mark unread if message is NEWER than last seen
+      if (!lastSeen || new Date(msg.created_at) > new Date(lastSeen)) {
         unreadMap[msg.sender_email] = true;
       }
     }
   });
 
-  // ✅ Step B: merge stored + new unread
-  const finalState = { ...unreadMap, ...stored };
-
-  setUnreadUsers(finalState);
+  setUnreadUsers(unreadMap);
 };
 
   
