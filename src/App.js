@@ -383,7 +383,7 @@ useEffect(() => {
       { event: "INSERT", schema: "public", table: "messages" },
       (payload) => {
         const msg = payload.new;
-        fetchUsers();
+       // fetchUsers();
        
 // ❌ Ignore your own messages
 if (msg.sender_email === user.email) return;
