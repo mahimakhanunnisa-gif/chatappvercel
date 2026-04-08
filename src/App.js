@@ -198,9 +198,12 @@ useEffect(() => {
   const unreadMap = {};
 
   data.forEach((msg) => {
-    if (msg.sender_email !== chatEmail) {
-      unreadMap[msg.sender_email] = true;
-    }
+    if (
+  msg.receiver_email === user.email &&   // 🔥 important
+  msg.sender_email !== user.email        // 🔥 ignore self
+) {
+  unreadMap[msg.sender_email] = true;
+}
   });
 
   setUnreadUsers(unreadMap);
