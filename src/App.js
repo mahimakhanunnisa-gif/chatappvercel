@@ -398,37 +398,22 @@ if (msg.receiver_email === user.email) {
 }    
 */
         
-        (payload) => {
-  const msg = payload.new;
+        {
+  setMessages((prev) => {
+    const exists = prev.find(
+      (m) =>
+        m.id === msg.id ||
+        (
+          m.content === msg.content &&
+          m.sender_email === msg.sender_email &&
+          m.receiver_email === msg.receiver_email
+        )
+    );
 
-  console.log("NEW MSG:", msg);
+    if (exists) return prev;
 
-  // ❌ Ignore your own messages completely
-  if (msg.sender_email === user.email) return;
-
-  // ✅ Only handle messages RECEIVED by you
-  if (msg.receiver_email === user.email) {
-
-    // 👉 If chat is OPEN → show message
-    if (msg.sender_email === chatEmail) {
-      setMessages((prev) => {
-        const exists = prev.find((m) => m.id === msg.id);
-        if (exists) return prev;
-        return [...prev, msg];
-      });
-    }
-
-    // 👉 If chat NOT open → mark unread
-    else {
-      setUnreadUsers((prev) => ({
-        ...prev,
-        [msg.sender_email]: true
-      }));
-    }
-  }
-
-  // 🔥 Always update users list
-  fetchUsers();
+    return [...prev, msg];
+  });
 }
       }
     )
