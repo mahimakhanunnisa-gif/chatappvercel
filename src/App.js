@@ -403,17 +403,13 @@ if (msg.receiver_email === user.email) {
   // 👉 If chat NOT open → mark unread
   else {
     setUnreadUsers((prev) => {
-  const stored = JSON.parse(localStorage.getItem("readUsers")) || {};
-  const lastSeen = stored[msg.sender_email];
+  // ✅ ALWAYS mark unread for NEW incoming message
+  const updated = {
+    ...prev,
+    [msg.sender_email]: true
+  };
 
-  if (!lastSeen || new Date(msg.created_at) > new Date(lastSeen)) {
-    return {
-      ...prev,
-      [msg.sender_email]: true
-    };
-  }
-
-  return prev;
+  return updated;
 });
   }
 }
